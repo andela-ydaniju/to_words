@@ -21,7 +21,8 @@ module ToWords
       result << temp_result + " " + DIVISIONS[counter] + " " if temp_result
       counter += 1
     end
-    sign + result.reverse.join(", ").rstrip
+    word = sign + result.reverse.join(", ").rstrip
+    word.sub!("and ", "") if word[0..3] == "and "
   end
 end
 

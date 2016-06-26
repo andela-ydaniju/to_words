@@ -8,7 +8,7 @@ module ToWords
       hundred, remaining = num.divmod(100)
 
       return higher_than_hundred(hundred, remaining, counter) if hundred != 0
-      UNDER_HUNDRED[remaining] if hundred == 0 && remaining != 0
+      "and " + UNDER_HUNDRED[remaining] if hundred == 0 && remaining != 0
     end
 
     def higher_than_hundred(hundred, remaining, counter)
