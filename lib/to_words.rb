@@ -5,9 +5,9 @@ module ToWords
   require_relative "./to_words/divisions.rb"
   require_relative "./to_words/utils.rb"
 
-  include ToWords::UnderHundred
-  include ToWords::Divisions
-  include ToWords::Utils
+  include UnderHundred
+  include Divisions
+  include Utils
 
   def to_words
     num = numerical?(self)
