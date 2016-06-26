@@ -4,6 +4,17 @@ module ToWords
   module Utils
     include UnderHundred
 
+    def sanitize(num_in_words, sign)
+      num_in_words = sign + num_in_words.reverse.join(", ").rstrip
+      num_in_words.sub!("and ", "") if num_in_words[0..3] == "and "
+      num_in_words.gsub!(" ,", ",")
+      num_in_words.gsub!("  ", " ")
+      num_in_words.sub!(", and", " and")
+      num_in_words.sub!(" and", "") if num_in_words.split(" ")[0] == "negative"
+
+      num_in_words
+    end
+
     def result_below_one_thousand(num, counter)
       hundred, remaining = num.divmod(100)
 

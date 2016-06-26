@@ -15,11 +15,15 @@ RSpec.describe "to_word" do
     end
 
     it "converts '1,001' to `one Thousand and one`" do
-      expect(1_001.to_words).to eq("one Thousand , and one")
+      expect(1_001.to_words).to eq("one Thousand and one")
+    end
+
+    it "converts '-1,001' to `negative one Thousand and one`" do
+      expect(-1_001.to_words).to eq("negative one Thousand and one")
     end
 
     it "converts '1,001' to `one Thousand and one`" do
-      num = "one Billion , one Hundred  Thousand , one Hundred and one"
+      num = "one Billion, one Hundred Thousand, one Hundred and one"
       expect(1_000_100_101.to_words).to eq num
     end
 
