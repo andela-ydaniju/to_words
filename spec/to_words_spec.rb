@@ -22,9 +22,15 @@ RSpec.describe "to_word" do
       expect(-1_001.to_words).to eq("negative one Thousand and one")
     end
 
-    it "converts '1,001' to `one Thousand and one`" do
+    it "returns the word equivalent of `1_000_100_101`" do
       num = "one Billion, one Hundred Thousand, one Hundred and one"
       expect(1_000_100_101.to_words).to eq num
+    end
+
+    it "returns the word equivalent of `1_000_100_101`" do
+      num = "twelve Million, five Hundred fifty four"\
+      " Thousand, six Hundred and fifty five"
+      expect(12_554_655.to_words).to eq num
     end
 
     it "raises error for non-numerical string '1d'" do
@@ -35,8 +41,12 @@ RSpec.describe "to_word" do
       expect { "d1".to_words }.to raise_error "A whole number is expected"
     end
 
-    it "it extends Fixnum methods" do
+    it "it extends Fixnum class" do
       expect(1.methods).to include :to_words
+    end
+
+    it "it extends Srring class" do
+      expect("1".methods).to include :to_words
     end
   end
 end
